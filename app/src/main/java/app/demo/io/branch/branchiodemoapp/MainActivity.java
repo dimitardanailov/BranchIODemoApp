@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -14,10 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    private TextView mGreetings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mGreetings = (TextView) findViewById(R.id.greetings);
     }
 
     @Override
@@ -33,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
                     // params will be empty if no data found
                     // ... insert custom logic here ...
                     Log.d(TAG, referringParams.toString());
-                    Log.d(TAG, "Branch io success");
+                    mGreetings.setText("Success: " + referringParams.toString());
+                    // Log.d(TAG, "Branch io success");
                 } else {
                     Log.d(TAG, "Branch io error");
                     Log.d(TAG, error.getMessage());
+
+                    mGreetings.setText("Error: " + error.getMessage());
                 }
             }
         }, this.getIntent().getData(), this);

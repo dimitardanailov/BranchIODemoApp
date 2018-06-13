@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BranchIODemoApp</string>
+    <string name="waiting">@string/waiting</string>
 </resources>
